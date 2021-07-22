@@ -17,10 +17,12 @@ router.get("/books", (req, res) => {
 // POST
 router.post("/books", (req, res) => {
     // filtering to get only required fields and remove unnecessary ones
-    const { title, author, description, isbn, categories, image_url, price, currencyCode, buy_url } = req.body;
+    console.log(req.body);
+    const { title, author, description, isbn, categories, notes } = req.body;
 
     // using create method on the book object passing request's body
     Book.create(req.body).then((book) => {
+        console.log(book);
         res.status(201).send({ status: "success" });
     }).catch((err) => {
         res.status(400).send(err);

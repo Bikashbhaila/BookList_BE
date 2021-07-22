@@ -9,6 +9,7 @@ const bookSchema = new Schema({
     isbn: String,
     categories: String, 
     image_url: String,
+    notes: String
 });
 
 const bookObj = mongoose.model("book", bookSchema);    // converting bookSchema to a model and exporting for use
