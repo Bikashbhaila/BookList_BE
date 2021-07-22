@@ -34,12 +34,14 @@ router.put("/books", (req, res) => {
     // extract param from the request
     const { _id } = req.query;
 
+    console.log(req.body);
+
     // checking if the put request has _id
     if (_id === undefined) {
         return res.status(400).send({ message: "?_id required" });
     }
 
-    Book.findOneAndUpdate(_id, req.body).then(book => {
+    Book.findByIdAndUpdate(_id, req.body).then(book => {
         if (!book) {
             return res.status(404).send({ message: "no book with that _id found update" });
         }
